@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span{
+				display: inline-block;
+				width: 30px;
+				height: 60px;
+				background: black;
+				border-radius:5px ;
+				color: #fff;
+				text-align: center;
+				line-height: 60px;
+			}
+		</style>
+	</head>
+	<body>
+		<audio></audio>
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+		<span>4</span>
+		<span>5</span>
+		<span>6</span>
+		<span>7</span>
+		<script>
+			window.onload = function(){
+				
+				var a=document.getElementsByTagName("span");
+				
+				var b=document.getElementsByTagName("audio")[0];
+				
+				for(var i=0;i<a.length;i++){
+					
+					a[i].index=i;
+					
+					a[i].onclick = function(){
+						
+						b.src="音频/"+a[this.index].innerHTML+".mp3"
+						console.log(i)
+						b.play()
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

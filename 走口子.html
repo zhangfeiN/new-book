@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body style="background:#ccc;">
+		<canvas width="600" height="600" style="background: #fff;"></canvas>
+		<script>
+			window.onload = function(){
+				var a = document.getElementsByTagName("canvas")[0];
+				var tim=null;
+				var tim1=null;
+				 var ctx = a.getContext("2d")
+//				 绘制矩形
+				ctx.fillRect(0,0,100,100)
+//				填充矩形
+				ctx.fill()
+				var cX=0;
+//				设置定时器				
+					tim = setInterval(function(){
+					cX++;
+					if(cX<=500){
+						
+						ctx.fillRect(cX,0,100,100);
+						
+					}else if(cX<=1000){
+						ctx.fillRect(500,cX-500,100,100);
+						
+					}else if(cX<=1500){
+						ctx.fillRect(1500-cX,500,100,100);
+						
+					}else if(cX<=2000){
+						ctx.fillRect(0,2000-cX,100,100);
+						
+					}
+				})
+				
+				
+			}
+		</script>
+	</body>
+</html>

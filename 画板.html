@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			canvas{
+				margin-left:300px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas height="600" width="600" style="background: #ccc;"></canvas>
+		<button>清除</button>
+		<script>
+			window.onload = function(){
+//				获取元素
+				var a = document.getElementsByTagName("canvas")[0];
+				var b = document.getElementsByTagName("button")[0];
+//				创建绘图环境
+				var ctx = a.getContext("2d");
+//				绑定鼠标按下事件
+				a.onmousedown = function(ev){
+					var ev = ev || window.event;
+//					获取鼠标位置
+
+					var mouserX=ev.pageX-this.offsetLeft;
+					var mouserY=ev.pageY-this.offsetTop;	
+					
+//					设置起始位置
+					ctx.beginPath();
+
+					ctx.moveTo(mouserX,mouserY);
+//					鼠标移动事件		
+					
+					document.onmousemove = function(ev){
+						var mouserX1=ev.pageX-a.offsetLeft;
+						var mouserY1=ev.pageY-a.offsetTop;
+					
+//					设置移动的点
+						ctx.lineTo(mouserX1,mouserY1);
+						
+//						8.绘制边框
+						ctx.stroke();
+						
+					}
+//					鼠标松开事件
+					document.onmouseup = function(){
+						
+						document.onmousemove = null;
+					
+						ctx.closePath();
+					}
+					b.onclick = function(){
+						ctx.clearRect(0,0,100,100)
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
